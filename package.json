@@ -8,6 +8,7 @@
     "name": "Jordan Becker",
     "url": "https://becker.io"
   },
+  "keywords": ["react-native", "table"],
   "license": "MIT",
   "peerDependencies": {
     "react": "*",
