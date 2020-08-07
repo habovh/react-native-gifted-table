@@ -1,6 +1,6 @@
 {
   "name": "react-native-gifted-table",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HTML-like approach to bring fluid tables to React Native that do not rely on flex nor hard-coded width.",
   "main": "index.js",
   "repository": "https://github.com/habovh/react-native-gifted-table",
@@ -8,7 +8,10 @@
     "name": "Jordan Becker",
     "url": "https://becker.io"
   },
-  "keywords": ["react-native", "table"],
+  "keywords": [
+    "react-native",
+    "table"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "react": "*",
