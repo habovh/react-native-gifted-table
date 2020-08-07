@@ -90,7 +90,6 @@ export class Table extends React.Component {
     if (this.layoutCountLimit
       && this.cellsLayoutCount >= this.layoutCountLimit
       && !this.inSync()) {
-      console.log('Applying')
       this.setState({ renderSizes: this.sizes })
     }
   }
