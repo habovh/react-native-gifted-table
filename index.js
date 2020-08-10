@@ -72,11 +72,6 @@ export class Table extends React.Component {
     this.setLayoutCountLimit()  
   }
 
-  shouldComponentUpdate() {
-    if (this.renderCount > 200) return false
-    return true
-  }
-
   componentDidUpdate() {
     this.setLayoutCountLimit()
   }
