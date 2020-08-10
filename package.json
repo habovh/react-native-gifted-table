@@ -1,6 +1,6 @@
 {
   "name": "react-native-gifted-table",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "HTML-like approach to bring fluid tables to React Native that do not rely on flex nor hard-coded width.",
   "main": "index.js",
   "repository": "https://github.com/habovh/react-native-gifted-table",
