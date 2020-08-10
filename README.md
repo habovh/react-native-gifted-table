@@ -18,26 +18,73 @@ npm install react-native-gifted-table
 
 ```jsx
 import React from 'react'
-import { Text } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native'
 import { Table, Row, Cell } from 'react-native-gifted-table'
 
+const styles = StyleSheet.create({
+  wrapper: {
+    paddingVertical: 50,
+    paddingHorizontal: 20,
+  },
+  table: {
+    alignItems: 'flex-start',
+  },
+  cell: {
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRightColor: '#eee',
+    borderRightWidth: 1,
+  },
+  row: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+  },
+  header: {
+    fontWeight: '600',
+  },
+})
+
 const MyComponent = () => (
-  <Table>
-    <Row>
-      <Cell render={() => <Text>Alice</Text>}/>
-      <Cell render={() => <Text>Bob</Text>}/>
-      <Cell render={() => <Text>Claire</Text>}/>
-    </Row>
-    <Row>
-      <Cell render={() => <Text>15 points</Text>}/>
-      <Cell render={() => <Text>12 points</Text>}/>
-      <Cell render={() => <Text>Did not play</Text>}/>
-    </Row>
-  </Table>
+  <View style={styles.wrapper}>
+    <Table style={styles.table}>
+      <Row style={styles.row}>
+        <Cell style={styles.cell} />
+        <Cell style={styles.cell} render={() => <Text style={styles.header}>Alice</Text>} />
+        <Cell style={styles.cell} render={() => <Text style={styles.header}>Bob</Text>} />
+        <Cell style={styles.cell} render={() => <Text style={styles.header}>Claire</Text>} />
+      </Row>
+      <Row style={styles.row}>
+        <Cell style={styles.cell} render={() => <Text>Round 1</Text>} />
+        <Cell style={styles.cell} render={() => <Text>15</Text>} />
+        <Cell style={styles.cell} render={() => <Text>12</Text>} />
+        <Cell style={styles.cell} render={() => <Text>18</Text>} />
+      </Row>
+      <Row style={styles.row}>
+        <Cell style={styles.cell} render={() => <Text>Round 2</Text>} />
+        <Cell style={styles.cell} render={() => <Text>11</Text>} />
+        <Cell style={styles.cell} render={() => <Text>Did not play</Text>} />
+        <Cell style={styles.cell} render={() => <Text>22</Text>} />
+      </Row>
+      <Row style={styles.row}>
+        <Cell style={styles.cell} render={() => <Text>Total</Text>} />
+        <Cell style={styles.cell} render={() => <Text>26</Text>} />
+        <Cell style={styles.cell} render={() => <Text>12</Text>} />
+        <Cell style={styles.cell} render={() => <Text>40</Text>} />
+      </Row>
+    </Table>
+  </View>
 )
+
+export default MyComponent
 ```
 
 > For large tables, you may want to wrap your table in scrollable components.
+
+![screenshot](./screenshot.png)
 
 ## Styling
 
