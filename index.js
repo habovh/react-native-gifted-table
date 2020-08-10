@@ -92,10 +92,10 @@ export class Table extends React.Component {
   inSync = () => {
     const stateSizes = Object.getOwnPropertyNames(this.state.renderSizes)
       .map((key) => `${key}:${this.state.renderSizes[key]}`)
-      .join()
+      .join(',')
     const classSizes = Object.getOwnPropertyNames(this.sizes)
       .map((key) => `${key}:${this.sizes[key]}`)
-      .join()
+      .join(',')
 
     return stateSizes === classSizes
   }
