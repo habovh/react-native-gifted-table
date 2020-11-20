@@ -94,5 +94,7 @@ The library adjusts each `<Cell />`'s width to the largest cell in the column.
 
 :warning: It is important that all of your rows contain the same number of cells. If you want to "skip" a cell, simply add an empty `<Cell />` as a placeholder. There is currently no way to have a cell span over multiple columns.
 
+## Known limiations
 
+For performance reasons, cells width is only computed once when the cells mount. For this reason, if the data in the table happens to change and you need the table to adjust the columns width again using the new data, you may call `.reset()` on the `<Table />` component.
 
