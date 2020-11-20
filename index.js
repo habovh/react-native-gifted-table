@@ -69,14 +69,14 @@ export class Table extends React.Component {
   sizes = {}
 
   componentDidMount() {
-    this.setLayoutCountLimit()  
+    this._setLayoutCountLimit()  
   }
 
   componentDidUpdate() {
-    this.setLayoutCountLimit()
+    this._setLayoutCountLimit()
   }
 
-  onCellLayout = (index, event) => {
+  _onCellLayout = (index, event) => {
     this.cellsLayoutCount += 1
     const layoutWidth = event.nativeEvent.layout.width
     if (!this.sizes[index] || this.sizes[index] < layoutWidth) {
@@ -84,12 +84,12 @@ export class Table extends React.Component {
     }
     if (this.layoutCountLimit
       && this.cellsLayoutCount >= this.layoutCountLimit
-      && !this.inSync()) {
+      && !this._inSync()) {
       this.setState({ renderSizes: this.sizes })
     }
   }
 
-  inSync = () => {
+  _inSync = () => {
     const stateSizes = Object.getOwnPropertyNames(this.state.renderSizes)
       .map((key) => `${key}:${this.state.renderSizes[key]}`)
       .join(',')
@@ -100,7 +100,7 @@ export class Table extends React.Component {
     return stateSizes === classSizes
   }
 
-  setLayoutCountLimit = () => {
+  _setLayoutCountLimit = () => {
     const colsPerRow = React.Children.toArray(this.props.children).map((row) => React.Children.count(row.props.children))
     const minCols = Math.min(...colsPerRow) || 9
     const maxCols = Math.max(...colsPerRow)
@@ -115,6 +115,13 @@ export class Table extends React.Component {
     this.layoutCountLimit = minCols * numRows
   }
 
+  reset = () => {
+    this.layoutCountLimit = undefined
+    this.cellsLayoutCount = 0
+    this.sizes = {}
+    this.setState({ renderSizes: {}})
+  }
+
   render() {
     return (
       <View {...this.props}>
@@ -122,7 +129,7 @@ export class Table extends React.Component {
           if (!React.isValidElement(row)) return null
 
           return React.cloneElement(row, {
-            onCellLayout: this.onCellLayout,
+            onCellLayout: this._onCellLayout,
             sizes: this.state.renderSizes,
           })
         })}
