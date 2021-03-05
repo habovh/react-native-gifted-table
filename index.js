@@ -101,7 +101,8 @@ export class Table extends React.Component {
   }
 
   _setLayoutCountLimit = () => {
-    const colsPerRow = React.Children.toArray(this.props.children).map((row) => React.Children.count(row.props.children))
+    const rows = React.Children.toArray(this.props.children).filter(Boolean)
+    const colsPerRow = rows.map((row) => React.Children.count(row.props.children))
     const minCols = Math.min(...colsPerRow) || 9
     const maxCols = Math.max(...colsPerRow)
 
@@ -110,7 +111,7 @@ export class Table extends React.Component {
       console.warn('[native-table] All rows do not have the same columns count. Render cycles optimisations are disabled.')
     }
 
-    const numRows = React.Children.count(this.props.children)
+    const numRows = rows.length
     
     this.layoutCountLimit = minCols * numRows
   }
